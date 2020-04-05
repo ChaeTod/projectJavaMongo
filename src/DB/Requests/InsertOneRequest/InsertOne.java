@@ -12,8 +12,6 @@ public class InsertOne {
         Scanner in = new Scanner(System.in);
 
         Connector connector = new Connector();
-        //MongoDatabase data = new Connector().getMongoDatabase("company");
-        //MongoCollection collection = new Connector().getMongoCollection("users");
         connector.getMongoConnector();
         connector.getMongoDatabase();
         connector.getMongoCollection();

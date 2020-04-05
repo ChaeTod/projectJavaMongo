@@ -2,9 +2,7 @@ package DB.Requests.InsertManyRequest;
 
 import DB.Connection.Connector;
 import org.bson.Document;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class InsertMany {
@@ -16,8 +14,6 @@ public class InsertMany {
         connection.getMongoDatabase();
         connection.getMongoCollection();
 
-        List<Document[]> inputs = new ArrayList<>();
-
         System.out.println("Input the number of new users: ");
         int number = in.nextInt();
         Document[] newUsers = new Document[number];
@@ -28,9 +24,9 @@ public class InsertMany {
             in.nextLine();
             System.out.println("Input the age: ");
             int age = in.nextInt();
-
             System.out.println("Input the status: ");
             String status = in.next();
+
             newUsers[i] = new Document("name", name).append("age", age).append("status", status);
         }
         connection.getMongoCollection().insertMany(Arrays.asList(newUsers));

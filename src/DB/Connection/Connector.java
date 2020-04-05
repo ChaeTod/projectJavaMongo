@@ -5,7 +5,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-
 public class Connector {
 
     public MongoClient getMongoConnector() {
@@ -23,4 +22,5 @@ public class Connector {
         MongoCollection<Document> collection = getMongoDatabase().getCollection("users");
         return collection;
     }
+
 }

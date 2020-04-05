@@ -6,12 +6,14 @@ import DB.Requests.InsertOneRequest.InsertOne;
 import DB.Requests.ShowDataBase.showDataBase;
 import DB.Requests.UpdateRequest.Update;
 
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int choice;
+        String input;
+        int choice = 0;
         do {
             System.out.println(" ");
             System.out.println("Please, make your choice:");
@@ -21,9 +23,17 @@ public class Main {
             System.out.println("4 - Delete one");
             System.out.println("5 - Just show the database");
             System.out.println("0 - Exit");
-            choice = in.nextInt();
-            switch (choice){
-                case 1 :{
+
+            try {
+                input = in.next();
+                choice = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("You have inputted wrong format of a number! Do not use any symbols!");
+                choice = 11;
+            }
+
+            switch (choice) {
+                case 1: {
                     new InsertOne().insertOne();
                     break;
                 }
@@ -44,7 +54,11 @@ public class Main {
                     break;
                 }
                 default: {
-                    System.out.println("Have a nice day!");
+                    if (!String.valueOf(choice).matches("[0-5]")) {
+                        System.out.println("Please, use only numbers from 0 to 5!");
+                    } else {
+                        System.out.println("Have a nice day!");
+                    }
                     break;
                 }
             }
