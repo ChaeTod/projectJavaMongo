@@ -30,5 +30,6 @@ public class InsertMany {
             newUsers[i] = new Document("name", name).append("age", age).append("status", status);
         }
         connection.getMongoCollection().insertMany(Arrays.asList(newUsers));
+        connection.getMongoConnector().close();
     }
 }

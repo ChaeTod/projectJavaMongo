@@ -30,5 +30,6 @@ public class Update {
         Document updateInfo = new Document("name", updateName).append("age", updateAge).append("status", updateStatus);
         Document select = new Document("$set", updateInfo);
         connector.getMongoCollection().updateOne(input, select);
+        connector.getMongoConnector().close();
     }
 }
